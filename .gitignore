@@ -1,5 +1,9 @@
 *.db
+<<<<<<< HEAD
 # Ignore list for Eagle, a PCB layout tool
+=======
+ Ignore list for Eagle, a PCB layout tool
+>>>>>>> devESP-12
 
 # Backup files
 *.s#?
@@ -41,5 +45,9 @@ eagle.epf
 *.eps
 
 # file locks introduced since 7.x
+<<<<<<< HEAD
 *.lck
 
+=======
+*.lck
+>>>>>>> devESP-12
