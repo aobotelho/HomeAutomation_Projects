@@ -13,7 +13,7 @@
 //EDIT THESE LINES TO MATCH YOUR SETUP
 #define MQTT_SERVER_IP "192.168.1.30"
 const char* ssid = "Sumidouro de Baixo";
-const char* password = "abc123def4";
+const char* password = "-";
 
 //LED on ESP8266 GPIO2
 const int lightPin = 2;

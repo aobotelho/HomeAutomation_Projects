@@ -5,7 +5,7 @@
  *      https://github.com/knolleary/pubsubclient                               *
  *      https://github.com/tzapu/WiFiManager                                    *  
  *                                                                              *
- *  -Serial is ALWAYS used as TX_ONLY                                                      *
+ *  -Serial is ALWAYS used as TX_ONLY                                           *
  ********************************************************************************/
 #include <HAConstants.h>
 #include <PubSubClient.h>
