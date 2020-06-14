@@ -1,0 +1,3 @@
+https://github.com/itead/ITEADLIB_Arduino_WeeESP8266
+
+Add in board: http://arduino.esp8266.com/stable/package_esp8266com_index.json
