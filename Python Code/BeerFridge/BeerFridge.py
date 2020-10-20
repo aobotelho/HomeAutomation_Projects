@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import mpu6050
 from math import isclose
-from time import time
+from time import time,sleep
 
 class BeerFridge():    
     def __init__(self,
@@ -18,7 +18,7 @@ class BeerFridge():
             DEFROSTING = 'defrosting',
             compressorPin = 14,
             resistorPin = 15,
-            compressorOnTime = 1200,
+            compressorOnTime = 300,
             defrostingTime = 120):
         self.targetTempFile = targetTempFile
         self.deltaTempFile = deltaTempFile
@@ -32,6 +32,7 @@ class BeerFridge():
         self.DEFROSTING = DEFROSTING
         self.compressor = compressorPin
         self.resistor = resistorPin
+        self.tempList = []
         self.targetTemp = self.deltaTemp = self.currentTemp = 0
         self.timeCooler = self.timeResistor = 0
         self.currentState = ''
@@ -42,16 +43,27 @@ class BeerFridge():
         self.SetDefaultState()
 
     def GetCurrentStates(self):
-        self.currentTemp = self.mpu.get_temp()
+        self.SetCurrentTemp()
+
         with open(self.targetTempFile,'r') as fin:
             self.targetTemp = float(fin.read())
         with open(self.deltaTempFile,'r') as fin:
             self.deltaTemp = float(fin.read())
         with open(self.currentStateFile,'r') as fin:
             self.currentState = fin.read()
+    
+    def SetCurrentTemp(self):
+        self.tempList.append(self.mpu.get_temp())
+        self.tempList = self.tempList[1:]
+        self.currentTemp = round(sum(self.tempList)/len(self.tempList),2)
+
 
     def SetDefaultState(self):
-        self.currentTemp = self.mpu.get_temp()
+        for _ in range(5):
+            self.tempList.append(self.mpu.get_temp())
+            sleep(5)
+        self.SetCurrentTemp()
+
         GPIO.output(self.resistor,self.OFF)
         with open(self.targetTempFile,'r') as fin:
             self.targetTemp = fin.read()
