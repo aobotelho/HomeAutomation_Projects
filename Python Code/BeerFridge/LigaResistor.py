@@ -15,6 +15,6 @@ if __name__ == '__main__':
     GPIO.setup(resistor, GPIO.OUT)
 
     GPIO.output(resistor,GPIO.LOW)
-    GPIO.output(compressor,GPIO.HIGH)
+    GPIO.output(compressor,GPIO.LOW)
     sleep(300)
     GPIO.output(resistor,GPIO.HIGH)

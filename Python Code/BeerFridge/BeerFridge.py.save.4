@@ -1,0 +1,21 @@
+import RPi.GPIO as GPIO
+import mpu6050
+from math import isclose
+from time import time,sleep
+from w1thermsensor import W1ThermSensor
+
+
+class BeerFridge():    
+    def __init__(self,
+            mpu6050Var: mpu6050 = None,
+            targetTempFile: str = './Contoller/targetTemperature.txt',
+            deltaTempFile =  './Contoller/deltaTemp.txt',
+            currentStateFile = './Contoller/currentState.txt',
+            logDataFile = './Contoller/logData.csv',
+            RESISTOR_OFF = GPIO.HIGH,
+            RESISTOR_ON = GPIO.LOW,
+            COMPRESSOR_OFF = GPIO.LOW,
+            COMPRESSOR_ON = GPIO.HIGH,
+            WARMING = 'warming',
+            COOLING = 'cooling',
+            TARGETTEMP = 'targettemp',

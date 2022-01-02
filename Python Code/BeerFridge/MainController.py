@@ -17,7 +17,11 @@ if __name__ == '__main__':
     beerFridge = BeerFridge()
 
     while True:
-        beerFridge.GetCurrentStates()
-        beerFridge.DefineNextStage()
-        beerFridge.PrintInfo()
-        sleep(delay_time)
+        try:
+            beerFridge.GetCurrentStates()
+            beerFridge.DefineNextStage()
+            beerFridge.PrintInfo()
+            sleep(delay_time)
+        except Exception as e:
+            print('Deu Erro!!!!')
+            print(e)
