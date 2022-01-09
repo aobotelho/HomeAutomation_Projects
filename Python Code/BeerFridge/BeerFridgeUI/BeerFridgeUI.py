@@ -191,7 +191,7 @@ class BeerFridgeUI():
         pass
 
     def UpdateParameters(self):
-        self.event, self.values = self.window.read()
+        self.event, self.values = self.window.read(timeout = 3)
         pass
 
     def FormatTemperature(self,current_temp):
@@ -217,13 +217,9 @@ class BeerFridgeUI():
     
     def UpButton(self, file_path:str):
         with open(file_path,'r') as fin:
-            targetTemp = fin.read()
+            targetTemp = float(fin.read())
 
-        print(f'Li antes de float: {targetTemp}')
-        targetTemp = float(targetTemp)
-        print(f'Li DEPOIS de float: {targetTemp}')
         targetTemp = targetTemp + 0.1
-
 
         with open(file_path,'w') as fout:
             fout.write(str(targetTemp))
@@ -234,12 +230,12 @@ class BeerFridgeUI():
     def DownButton(self,file_path:str):
         with open(file_path,'r') as fin:
             targetTemp = float(fin.read())
-        
+
         targetTemp = targetTemp - 0.1
 
         with open(file_path,'w') as fout:
-            fout.write(targetTemp)
-        
+            fout.write(str(targetTemp))
+
         self.UpdateTargetTemp(targetTemp)
         pass
 
