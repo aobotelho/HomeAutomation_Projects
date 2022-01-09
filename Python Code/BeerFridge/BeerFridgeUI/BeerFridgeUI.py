@@ -37,17 +37,17 @@ class BeerFridgeUI():
 
         #Prepping images 
         # Logo
-        self.ResizeImage('./images/logo.png',self.column_logo_size,keep_ratio=True, fill_bottom = True)
+        self.ResizeImage('./BeerFridgeUI/images/logo.png',self.column_logo_size,keep_ratio=True, fill_bottom = True)
         # Graph
-        self.ResizeImage('./images/mockup_graph.png',self.graph_size,keep_ratio=True, fill_bottom = True)
+        self.ResizeImage('./BeerFridgeUI/images/mockup_graph.png',self.graph_size,keep_ratio=True, fill_bottom = True)
         #Thermometer Blue
-        self.ResizeImage('./images/thermometer_blue.png',self.current_state_logo_size,keep_ratio=True, fill_bottom = False)
+        self.ResizeImage('./BeerFridgeUI/images/thermometer_blue.png',self.current_state_logo_size,keep_ratio=True, fill_bottom = False)
         #Thermometer White
-        self.ResizeImage('./images/thermometer_white.png',self.target_logo_size,keep_ratio=True, fill_bottom = False)
+        self.ResizeImage('./BeerFridgeUI/images/thermometer_white.png',self.target_logo_size,keep_ratio=True, fill_bottom = False)
         #Green Up Arrow
-        self.ResizeImage('./images/green_arrow_button.png',self.target_up_arrow_size,keep_ratio=True, fill_bottom = True)
+        self.ResizeImage('./BeerFridgeUI/images/green_arrow_button.png',self.target_up_arrow_size,keep_ratio=True, fill_bottom = True)
         #Red Down Arros
-        self.ResizeImage('./images/red_arrow_button.png',self.target_down_arrow_size,keep_ratio=True, fill_bottom = True)
+        self.ResizeImage('./BeerFridgeUI/images/red_arrow_button.png',self.target_down_arrow_size,keep_ratio=True, fill_bottom = True)
 
         self.key_logo_image_key = '-logo_image-'
         self.key_current_datetime = '-current_datetime-'
@@ -70,7 +70,7 @@ class BeerFridgeUI():
         }
 
         column_logo = [[
-            sg.Image('./images/logo_resized.png',size=self.column_logo_size,pad = 0, key = self.key_logo_image_key)
+            sg.Image('./BeerFridgeUI/images/logo_resized.png',size=self.column_logo_size,pad = 0, key = self.key_logo_image_key)
         ]]
 
         column_2 = [[
@@ -92,7 +92,7 @@ class BeerFridgeUI():
                 )
                 ,sg.Column([[
                     sg.Image(
-                        './images/thermometer_blue_resized.png'
+                        './BeerFridgeUI/images/thermometer_blue_resized.png'
                         ,size=self.current_state_logo_size
                         ,pad = 0
                         ,background_color = 'black'
@@ -122,7 +122,7 @@ class BeerFridgeUI():
                 )
                 ,sg.Column([[
                     sg.Image(
-                        './images/thermometer_white_resized.png'
+                        './BeerFridgeUI/images/thermometer_white_resized.png'
                         ,size = self.target_logo_size
                         ,pad = 0
                         ,key = self.key_target_logo
@@ -151,7 +151,7 @@ class BeerFridgeUI():
                     ,background_color = 'black'
                 )
                 ,sg.Image(
-                    './images/red_arrow_button_resized.png'
+                    './BeerFridgeUI/images/red_arrow_button_resized.png'
                     ,size = self.target_down_arrow_size
                     ,pad = 0
                     ,background_color = 'black'
@@ -159,7 +159,7 @@ class BeerFridgeUI():
                     ,key = self.key_down_button
                 )
                 ,sg.Image(
-                    './images/green_arrow_button_resized.png'
+                    './BeerFridgeUI/images/green_arrow_button_resized.png'
                     ,size = self.target_up_arrow_size
                     ,pad = 0
                     ,background_color = 'black'
@@ -167,7 +167,7 @@ class BeerFridgeUI():
                     ,key = self.key_up_button
                 )
             ]
-            ,[sg.Image('./images/mockup_graph_resized.png',size = self.graph_size, pad = 0, background_color = 'yellow')]
+            ,[sg.Image('./BeerFridgeUI/images/mockup_graph_resized.png',size = self.graph_size, pad = 0, background_color = 'yellow')]
         ]
         
         layout = [[
