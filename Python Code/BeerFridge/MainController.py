@@ -1,4 +1,3 @@
-import mpu6050
 from time import sleep
 import threading
 from BeerFridge import BeerFridge
@@ -13,7 +12,6 @@ delay_time = 5
 if __name__ == '__main__':
     GPIO.setup(compressor, GPIO.OUT)
     GPIO.setup(resistor, GPIO.OUT)
-    #mpu = mpu6050.mpu6050(0x68)
     beerFridge = BeerFridge()
 
     while True:
