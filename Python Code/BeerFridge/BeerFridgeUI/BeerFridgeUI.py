@@ -65,8 +65,8 @@ class BeerFridgeUI():
             ,self.key_current_state_text: self.CurrentStateFormat
             ,self.key_target_logo: self.DummyFunction
             ,self.key_target_temp: self.FormatTemperature
-            ,self.key_down_button: self.DownBottom
-            ,self.key_up_button: self.UpBottom
+            ,self.key_down_button: self.DownButton
+            ,self.key_up_button: self.UpButton
         }
 
         column_logo = [[
@@ -192,8 +192,6 @@ class BeerFridgeUI():
 
     def UpdateParameters(self):
         self.event, self.values = self.window.read()
-        print(f'Eventos: {self.event}')
-        print(f'Values: {self.values}')
         pass
 
     def FormatTemperature(self,current_temp):
@@ -204,9 +202,16 @@ class BeerFridgeUI():
         return f'{self.FormatTemperature(current_temperature)}\n{current_state}'
 
     def CurrentDatetimeFormat(self):
-        return f'Andre Botelho\nBeer Fridge Automation\n{datetime.now().strftime("%m/%d/%Y %H:%M")}'
+        return f'{datetime.now().strftime("%m/%d/%Y %H:%M")}'
+
+    def UpdateDateTime(self):
+        self.window[self.key_current_datetime].update(f'Andre Botelho\nBeer Fridge Automation\n{self.CurrentDatetimeFormat()}')
     
-    def UpBottom(self, file_path:str):
+    def UpdateTargetTemp(self,target_temp):
+        self.window[self.key_target_temp].update(self.FormatTemperature(target_temp))
+        pass
+    
+    def UpButton(self, file_path:str):
         with open(file_path,'r') as fin:
             targetTemp = float(fin.read())
         
@@ -215,11 +220,10 @@ class BeerFridgeUI():
         with open(file_path,'w') as fout:
             fout.write(targetTemp)
         
-        self.window[self.key_target_temp].update(self.FormatTemperature(targetTemp))
-
+        self.UpdateTargetTemp(targetTemp)
         pass
 
-    def DownBottom(self,file_path:str):
+    def DownButton(self,file_path:str):
         pass
 
     def ResizeImage(self,image_path,new_size, keep_ratio = False, fill_bottom = False):

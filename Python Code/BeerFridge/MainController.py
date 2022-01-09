@@ -23,7 +23,6 @@ if __name__ == '__main__':
         try:
             beerFridge.GetCurrentStates()
             beerFridge.DefineNextStage()
-            beerFridge.PrintInfo()
             
             ui.UpdateParameters()
 
@@ -31,16 +30,21 @@ if __name__ == '__main__':
                 break
             
             elif ui.event == ui.key_down_button:
+                print('Encontrei DOWN')
                 ui.DownBottom(beerFridge.targetTempFile)
             elif ui.event == ui.key_up_button:
+                print('Encontrei UP')
                 ui.UpBottom(beerFridge.targetTempFile)
             else:
                 try:
+                    print(f'Encontrei {ui.event}')
                     ui.functions_dict(ui.event)()
                 except Exception as e:
                     print(f'Error on trying to act on event. Event: {ui.event}')
                     print(e)
 
+            beerFridge.PrintInfo()
+            ui.UpdateDateTime()
             sleep(delay_time)
         except Exception as e:
             print('Deu Erro!!!!')
