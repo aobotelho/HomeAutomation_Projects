@@ -169,7 +169,7 @@ class BeerFridgeUI():
             ]
             ,[sg.Image('./BeerFridgeUI/images/mockup_graph_resized.png',size = self.graph_size, pad = 0, background_color = 'yellow')]
         ]
-        
+
         layout = [[
             sg.Column(column_logo, size = self.column_logo_size, pad = 0, background_color = 'black')
             ,sg.Column(column_2, size = self.column_2_size, pad = 0, background_color = 'black')
@@ -181,12 +181,12 @@ class BeerFridgeUI():
             ,size=self.figure_size
             ,background_color='black'
         )
-        
+
         self.event = None
         self.values = None
 
         pass
-    
+
     def DummyFunction(self):
         pass
 
@@ -217,13 +217,17 @@ class BeerFridgeUI():
     
     def UpButton(self, file_path:str):
         with open(file_path,'r') as fin:
-            targetTemp = float(fin.read())
-        
+            targetTemp = fin.read()
+
+        print(f'Li antes de float: {targetTemp}')
+        targetTemp = float(targetTemp)
+        print(f'Li DEPOIS de float: {targetTemp}')
         targetTemp = targetTemp + 0.1
 
+
         with open(file_path,'w') as fout:
-            fout.write(targetTemp)
-        
+            fout.write(str(targetTemp))
+
         self.UpdateTargetTemp(targetTemp)
         pass
 

@@ -23,12 +23,12 @@ if __name__ == '__main__':
         try:
             beerFridge.GetCurrentStates()
             beerFridge.DefineNextStage()
-            
+
             ui.UpdateParameters()
 
             if ui.event == 'OK' or ui.event == sg.WIN_CLOSED:
                 break
-            
+
             elif ui.event == ui.key_down_button:
                 print('Encontrei DOWN')
                 ui.DownButton(beerFridge.targetTempFile)
