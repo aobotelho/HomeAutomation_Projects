@@ -105,7 +105,7 @@ class BeerFridgeUI():
                 )
                 ,sg.Column([[
                     sg.Text(
-                        'Cooling'
+                        self.UpdateCurrentState(123,'cooling')
                         ,size = self.current_state_text_size
                         ,auto_size_text = True
                         ,text_color = '#A4D0FB'
@@ -135,7 +135,7 @@ class BeerFridgeUI():
                 )
                 ,sg.Column([[
                     sg.Text(
-                        self.FormatTemperature(69)
+                        self.UpdateTargetTemp(69)
                         ,size = self.target_text_size
                         ,auto_size_text = True
                         ,text_color = '#00FF00'
@@ -210,6 +210,10 @@ class BeerFridgeUI():
     def UpdateTargetTemp(self,target_temp):
         self.window[self.key_target_temp].update(self.FormatTemperature(target_temp))
         pass
+
+    def UpdateCurrentState(self,current_temp, state_text):
+        self.window[self.key_current_state_text].update(self.CurrentStateFormat(current_temp,state_text))
+        pass
     
     def UpButton(self, file_path:str):
         with open(file_path,'r') as fin:
@@ -224,6 +228,15 @@ class BeerFridgeUI():
         pass
 
     def DownButton(self,file_path:str):
+        with open(file_path,'r') as fin:
+            targetTemp = float(fin.read())
+        
+        targetTemp = targetTemp - 0.1
+
+        with open(file_path,'w') as fout:
+            fout.write(targetTemp)
+        
+        self.UpdateTargetTemp(targetTemp)
         pass
 
     def ResizeImage(self,image_path,new_size, keep_ratio = False, fill_bottom = False):

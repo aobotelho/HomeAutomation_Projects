@@ -9,7 +9,7 @@ GPIO.setmode(GPIO.BCM)
 
 compressor = 14
 resistor = 15
-delay_time = 5
+delay_time = 1
 
 
 if __name__ == '__main__':
@@ -45,6 +45,7 @@ if __name__ == '__main__':
 
             beerFridge.PrintInfo()
             ui.UpdateDateTime()
+            ui.UpdateCurrentState(round(beerFridge.currentTemp,2),beerFridge.currentState)
             sleep(delay_time)
         except Exception as e:
             print('Deu Erro!!!!')
