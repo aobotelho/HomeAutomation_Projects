@@ -8,7 +8,7 @@ from PySimpleGUI.PySimpleGUI import DummyButton
 
 class BeerFridgeUI():
     def __init__(self
-            ,resize_factor: int = 40
+            ,resize_factor: int = 20
             ,figure_size: tuple = (32,9)
             ,column_logo_size: tuple = (3,9)
             ,column_2_size: tuple = (27,9)
@@ -139,7 +139,7 @@ class BeerFridgeUI():
                         ,size = self.target_text_size
                         ,auto_size_text = True
                         ,text_color = '#00FF00'
-                        ,font = ("Helvetica", 50)
+                        ,font = ("Helvetica", int(round(self.resize_factor*1.25,0)))
                         # ,justification='top'
                         ,pad = 0
                         ,background_color = 'black'
