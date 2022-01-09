@@ -31,10 +31,10 @@ if __name__ == '__main__':
             
             elif ui.event == ui.key_down_button:
                 print('Encontrei DOWN')
-                ui.DownBottom(beerFridge.targetTempFile)
+                ui.DownButton(beerFridge.targetTempFile)
             elif ui.event == ui.key_up_button:
                 print('Encontrei UP')
-                ui.UpBottom(beerFridge.targetTempFile)
+                ui.UpButton(beerFridge.targetTempFile)
             else:
                 try:
                     print(f'Encontrei {ui.event}')

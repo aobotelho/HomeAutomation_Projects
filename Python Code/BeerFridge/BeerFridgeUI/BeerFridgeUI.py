@@ -215,7 +215,7 @@ class BeerFridgeUI():
         with open(file_path,'r') as fin:
             targetTemp = float(fin.read())
         
-        targetTemp = targetTemp + 1
+        targetTemp = targetTemp + 0.1
 
         with open(file_path,'w') as fout:
             fout.write(targetTemp)
