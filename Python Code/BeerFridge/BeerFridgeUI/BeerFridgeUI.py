@@ -9,7 +9,7 @@ from PySimpleGUI.PySimpleGUI import DummyButton
 class BeerFridgeUI():
     def __init__(self
             ,resize_factor: int = 40
-            ,figure_size: tuple = (30,9)
+            ,figure_size: tuple = (32,9)
             ,column_logo_size: tuple = (3,9)
             ,column_2_size: tuple = (27,9)
             ,column_2_date_size:tuple = (6,4)
@@ -22,7 +22,7 @@ class BeerFridgeUI():
             ,graph_size:tuple = (27,5)
         ):
 
-        self.resize_factor: int = 40
+        self.resize_factor: int = resize_factor
         self.figure_size = tuple((i * resize_factor for i in figure_size))
         self.column_logo_size = tuple((i * resize_factor for i in column_logo_size))
         self.column_2_size = tuple((i * resize_factor for i in column_2_size))
@@ -80,7 +80,7 @@ class BeerFridgeUI():
                         ,size=self.column_2_date_size
                         ,auto_size_text=True
                         ,text_color='#00FF00'
-                        ,font=("Helvetica", 20)
+                        ,font=("Helvetica", int(round(self.resize_factor/2,0)))
                         ,justification='left'
                         ,pad = 0
                         ,background_color='black'
@@ -109,7 +109,7 @@ class BeerFridgeUI():
                         ,size = self.current_state_text_size
                         ,auto_size_text = True
                         ,text_color = '#A4D0FB'
-                        ,font = ("Helvetica", 50)
+                        ,font = ("Helvetica", int(round(self.resize_factor*1.25,0)))
                         # ,justification='top'
                         ,pad = 0
                         ,background_color = 'black'
@@ -246,6 +246,6 @@ if __name__ == '__main__':
         ui.UpdateParameters()
         if ui.event == 'OK' or ui.event == sg.WIN_CLOSED:
             break
-        sleep(1)
+        #sleep(1)
     
     ui.CloseWindow()
