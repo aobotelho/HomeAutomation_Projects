@@ -222,7 +222,7 @@ class BeerFridgeUI():
         targetTemp = targetTemp + 0.1
 
         with open(file_path,'w') as fout:
-            fout.write(str(targetTemp))
+            fout.write(str(round(targetTemp,2)))
 
         self.UpdateTargetTemp(targetTemp)
         pass
@@ -234,7 +234,7 @@ class BeerFridgeUI():
         targetTemp = targetTemp - 0.1
 
         with open(file_path,'w') as fout:
-            fout.write(str(targetTemp))
+            fout.write(str(round(targetTemp,2)))
 
         self.UpdateTargetTemp(targetTemp)
         pass
