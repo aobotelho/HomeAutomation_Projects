@@ -105,7 +105,7 @@ class BeerFridgeUI():
                 )
                 ,sg.Column([[
                     sg.Text(
-                        self.UpdateCurrentState(123,'cooling')
+                        self.CurrentStateFormat(123,'cooling')
                         ,size = self.current_state_text_size
                         ,auto_size_text = True
                         ,text_color = '#A4D0FB'
@@ -135,7 +135,7 @@ class BeerFridgeUI():
                 )
                 ,sg.Column([[
                     sg.Text(
-                        self.UpdateTargetTemp(69)
+                        self.FormatTemperature(69)
                         ,size = self.target_text_size
                         ,auto_size_text = True
                         ,text_color = '#00FF00'
