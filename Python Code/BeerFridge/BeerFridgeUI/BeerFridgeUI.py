@@ -20,6 +20,7 @@ class BeerFridgeUI():
             ,target_up_arrow_size:tuple = (3,4)
             ,target_down_arrow_size:tuple = (3,4)
             ,graph_size:tuple = (27,5)
+            ,initial_target_temp = 100
         ):
 
         self.resize_factor: int = resize_factor
@@ -184,6 +185,8 @@ class BeerFridgeUI():
 
         self.event = None
         self.values = None
+
+        self.UpdateTargetTemp(initial_target_temp)
 
         pass
 
