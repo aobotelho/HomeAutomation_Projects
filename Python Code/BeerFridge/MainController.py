@@ -26,8 +26,20 @@ if __name__ == '__main__':
             beerFridge.PrintInfo()
             
             ui.UpdateParameters()
+
             if ui.event == 'OK' or ui.event == sg.WIN_CLOSED:
                 break
+            
+            elif ui.event == ui.key_down_button:
+                ui.DownBottom(beerFridge.targetTempFile)
+            elif ui.event == ui.key_up_button:
+                ui.UpBottom(beerFridge.targetTempFile)
+            else:
+                try:
+                    ui.functions_dict(ui.event)()
+                except Exception as e:
+                    print(f'Error on trying to act on event. Event: {ui.event}')
+                    print(e)
 
             sleep(delay_time)
         except Exception as e:
