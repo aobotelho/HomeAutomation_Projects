@@ -206,10 +206,20 @@ class BeerFridgeUI():
     def CurrentDatetimeFormat(self):
         return f'Andre Botelho\nBeer Fridge Automation\n{datetime.now().strftime("%m/%d/%Y %H:%M")}'
     
-    def UpBottom(self):
+    def UpBottom(self, file_path:str):
+        with open(file_path,'r') as fin:
+            targetTemp = float(fin.read())
+        
+        targetTemp = targetTemp + 1
+
+        with open(file_path,'w') as fout:
+            fout.write(targetTemp)
+        
+        self.window[self.key_target_temp].update(self.FormatTemperature(targetTemp))
+
         pass
 
-    def DownBottom(self):
+    def DownBottom(self,file_path:str):
         pass
 
     def ResizeImage(self,image_path,new_size, keep_ratio = False, fill_bottom = False):
