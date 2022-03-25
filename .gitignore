@@ -48,3 +48,7 @@ eagle.epf
 #logData.csv
 __pycache__
 */Controller/*
+
+*_resized.png
+.DS_Store
+*__pycache__*
