@@ -186,7 +186,7 @@ class BeerFridgeUI():
         self.event = None
         self.values = None
 
-        self.UpdateTargetTemp(initial_target_temp)
+        #self.UpdateTargetTemp(initial_target_temp)
 
         pass
 
