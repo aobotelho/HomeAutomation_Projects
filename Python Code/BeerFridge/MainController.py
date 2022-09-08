@@ -17,7 +17,7 @@ if __name__ == '__main__':
     GPIO.setup(resistor, GPIO.OUT)
 
     beerFridge = BeerFridge()
-    ui = BeerFridgeUI(UpdateTargetTemp = beerFridge.targetTemp)
+    ui = BeerFridgeUI(initial_target_temp = beerFridge.targetTemp)
 
     while True:
         try:
